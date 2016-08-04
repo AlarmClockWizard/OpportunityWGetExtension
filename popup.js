@@ -116,3 +116,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+function updateIcon() {
+  chrome.browserAction.setIcon({path:"iconGreen.png"});
+
+}
+
+chrome.browserAction.onClicked.addListener(updateIcon);
+updateIcon();
