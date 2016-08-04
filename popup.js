@@ -86,7 +86,7 @@ function getImageUrl(searchTerm, callback, errorCallback) {
     errorCallback('Network error.');
   };
   x.send();
-}
+} 
 
 function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
