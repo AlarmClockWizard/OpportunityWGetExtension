@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function updateIcon() {
-  chrome.browserAction.setIcon({path:"iconGreen.png"});
+  chrome.browserAction.setIcon({path:"iconActiveOnline.png"});
 
 }
 

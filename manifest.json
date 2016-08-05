@@ -6,7 +6,7 @@
   "version": "0.0",
 
   "browser_action": {
-    "default_icon": "iconGrey.png",
+    "default_icon": "iconInactive.png",
     "default_popup": "popup.html"
   },
   "permissions": [
