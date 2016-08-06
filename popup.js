@@ -117,9 +117,27 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-function updateIcon() {
-  chrome.browserAction.setIcon({path:"iconActiveOnline.png"});
+function updateIcon()
+ {
+  //chrome.browserAction.setIcon({path:"iconActiveOnline.png"});
 
+		 if(navigator.onLine)
+		 {
+			   chrome.browserAction.setIcon({path:"iconActiveOnline.png"});
+			   localStorage[getCurrentTabUrl()] = true;
+		 }		 
+		 else
+		 {
+			 if(localStorage[getCurrentTabUrl()])
+			 {
+				 chrome.browserAction.setIcon({path:"iconActiveOfflineServing.png"});
+			 }
+			 else
+			 {
+			   chrome.browserAction.setIcon({path:"iconActiveOfflineFailure.png"});
+			 }
+		 }		
+		 localStorage[getCurrentTabUrl()] = false;
 }
 
 chrome.browserAction.onClicked.addListener(updateIcon);
