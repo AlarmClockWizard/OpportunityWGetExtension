@@ -123,18 +123,18 @@ function updateIcon()
 
 		 if(navigator.onLine)
 		 {
-			   chrome.browserAction.setIcon({path:"iconActiveOnline.png"});
+			   chrome.browserAction.setIcon({path:"images/iconActiveOnline.png"});
 			   localStorage[getCurrentTabUrl()] = true;
 		 }		 
 		 else
 		 {
 			 if(localStorage[getCurrentTabUrl()])
 			 {
-				 chrome.browserAction.setIcon({path:"iconActiveOfflineServing.png"});
+				 chrome.browserAction.setIcon({path:"images/iconActiveOfflineServing.png"});
 			 }
 			 else
 			 {
-			   chrome.browserAction.setIcon({path:"iconActiveOfflineFailure.png"});
+			   chrome.browserAction.setIcon({path:"images/iconActiveOfflineFailure.png"});
 			 }
 		 }		
 		 localStorage[getCurrentTabUrl()] = false;
