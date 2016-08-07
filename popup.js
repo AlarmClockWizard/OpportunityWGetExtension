@@ -1,7 +1,3 @@
-// Copyright (c) 2014 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /**
  * Get the current URL.
  *
@@ -12,8 +8,9 @@ function getCurrentTabUrl(callback)
 {
   // Query filter to be passed to chrome.tabs.query - see
   // https://developer.chrome.com/extensions/tabs#method-query
-  var queryInfo = {
-    active: true,
+  var queryInfo = 
+  {
+	active: true,
     currentWindow: true
   };
 
@@ -27,16 +24,29 @@ function getCurrentTabUrl(callback)
     console.assert(typeof url == 'string', 'tab.url should be a string');
     callback(url);
   });
-
-  // Most methods of the Chrome extension APIs are asynchronous. This means that
-  // you CANNOT do something like this:
-  //
-  // var url;
-  // chrome.tabs.query(queryInfo, function(tabs) {
-  //   url = tabs[0].url;
-  // });
-  // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
+
+/*
+If the click was on a link, send a message to the background page.
+The message contains the link's URL.
+*/
+function notifyExtension(e) 
+{
+	var target = e.target;
+	while ((target.tagName != "A" || !target.href) && target.parentNode)
+	{
+		target = target.parentNode;
+	}
+	if (target.tagName != "A")
+	{
+		return;
+	}
+
+  console.log("content script sending message");
+  chrome.runtime.sendMessage({"url": target.href});
+}
+
+
 
 /**
  * @param {string} searchTerm - Search term for Google Image search.
@@ -134,5 +144,6 @@ function updateIcon()
 	});
 }
 
+window.addEventListener("click", notifyExtension);s
 chrome.browserAction.onClicked.addListener(updateIcon);
 updateIcon();
