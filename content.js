@@ -1,3 +1,5 @@
+debugger; //set an default breakpoint for the debugger
+
 /*
 If the click was on a link, send a message to the background page.
 The message contains the link's URL.

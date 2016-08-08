@@ -1,3 +1,5 @@
+debugger; //set an default breakpoint for the debugger
+
 function notify(message) 
 {
   console.log("background script received message");

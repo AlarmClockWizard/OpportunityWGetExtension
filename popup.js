@@ -1,3 +1,5 @@
+debugger; //set an default breakpoint for the debugger
+
 /**
  * Get the current URL.
  *
